@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    {% if current_user.is_authenticated %}
+    <nav class="bg-indigo-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-list-check text-2xl text-indigo-200"></i>
+                <a href="{{ url_for('dashboard') }}" class="font-bold text-xl tracking-wide">TaskManager</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="{{ url_for('dashboard') }}" class="hover:text-indigo-200 font-medium"><i class="fa-solid fa-chart-pie mr-1"></i> Dashboard</a>
+                <a href="{{ url_for('categories') }}" class="hover:text-indigo-200 font-medium"><i class="fa-solid fa-tags mr-1"></i> Categories</a>
+                <a href="{{ url_for('profile') }}" class="hover:text-indigo-200 font-medium"><i class="fa-solid fa-user mr-1"></i> Profile</a>
+                <a href="{{ url_for('logout') }}" class="bg-indigo-700 hover:bg-indigo-800 px-3 py-1.5 rounded-lg text-sm font-semibold transition"><i class="fa-solid fa-right-from-bracket mr-1"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="mb-4 p-4 rounded-lg text-sm font-medium border {% if category == 'danger' %} bg-red-50 text-red-700 border-red-200 {% elif category == 'success' %} bg-emerald-50 text-emerald-700 border-emerald-200 {% else %} bg-blue-50 text-blue-700 border-blue-200 {% endif %} flex justify-between items-center">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+        Task Management Dashboard System &copy; 2026
+    </footer>
+</body>
+</html>
