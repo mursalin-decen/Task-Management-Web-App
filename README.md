@@ -36,7 +36,7 @@
 
 ## 📁 Project Structure
 
-```text
+
 Task-Management-Web-App/
 │
 ├── app.py                  # Main application & route configurations
@@ -47,3 +47,49 @@ Task-Management-Web-App/
     ├── dashboard.html
     ├── categories.html
     └── profile.html
+
+
+----------
+🚀 Getting Started
+Follow these instructions to run the project locally on your machine.
+
+Prerequisites
+Make sure you have Python installed on your system.
+
+Installation Steps
+Clone the repository:
+
+Bash
+git clone [https://github.com/mursalin-decen/Task-Management-Web-App.git](https://github.com/mursalin-decen/Task-Management-Web-App.git)
+cd Task-Management-Web-App
+Install required dependencies:
+
+Bash
+pip install flask flask-sqlalchemy flask-login bcrypt
+Run the application:
+
+Bash
+python app.py
+Open in your browser:
+Open your web browser and go to: http://127.0.0.1:5000
+
+---------------
+💡 Usage
+Register a new account with your email and password.
+
+Log in to access your personal dashboard.
+
+Manage categories and add tasks with custom priority levels and due dates.
+
+Track your progress and toggle task status as completed when finished!
+------------------
+
+🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+
+-------
+👤 Author
+Md Mursalin Ahmmed
+
+-------
+GitHub: @mursalin-decen
